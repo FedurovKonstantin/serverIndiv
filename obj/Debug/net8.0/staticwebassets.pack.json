@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "/Users/kostya/Documents/AspNetCore.Docs/aspnetcore/fundamentals/websockets/samples/8.x/WebSocketsSample/wwwroot/index.html",
+      "PackagePath": "staticwebassets/index.html"
+    },
+    {
+      "Id": "/Users/kostya/Documents/AspNetCore.Docs/aspnetcore/fundamentals/websockets/samples/8.x/WebSocketsSample/wwwroot/style.css",
+      "PackagePath": "staticwebassets/style.css"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.WebSocketsSample.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.WebSocketsSample.props",
+      "PackagePath": "build\\WebSocketsSample.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.WebSocketsSample.props",
+      "PackagePath": "buildMultiTargeting\\WebSocketsSample.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.WebSocketsSample.props",
+      "PackagePath": "buildTransitive\\WebSocketsSample.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

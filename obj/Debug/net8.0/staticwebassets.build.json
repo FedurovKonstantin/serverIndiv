@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "Hash": "5n+GVAjdv0+roxQGogFSAKr5tA9o1x+rSoXmOcBWWZ0=",
+  "Source": "WebSocketsSample",
+  "BasePath": "_content/WebSocketsSample",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "WebSocketsSample/wwwroot",
+      "Source": "WebSocketsSample",
+      "ContentRoot": "/Users/kostya/Documents/AspNetCore.Docs/aspnetcore/fundamentals/websockets/samples/8.x/WebSocketsSample/wwwroot/",
+      "BasePath": "_content/WebSocketsSample",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "/Users/kostya/Documents/AspNetCore.Docs/aspnetcore/fundamentals/websockets/samples/8.x/WebSocketsSample/wwwroot/index.html",
+      "SourceId": "WebSocketsSample",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/kostya/Documents/AspNetCore.Docs/aspnetcore/fundamentals/websockets/samples/8.x/WebSocketsSample/wwwroot/",
+      "BasePath": "_content/WebSocketsSample",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/index.html"
+    },
+    {
+      "Identity": "/Users/kostya/Documents/AspNetCore.Docs/aspnetcore/fundamentals/websockets/samples/8.x/WebSocketsSample/wwwroot/style.css",
+      "SourceId": "WebSocketsSample",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/kostya/Documents/AspNetCore.Docs/aspnetcore/fundamentals/websockets/samples/8.x/WebSocketsSample/wwwroot/",
+      "BasePath": "_content/WebSocketsSample",
+      "RelativePath": "style.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/style.css"
+    }
+  ]
+}

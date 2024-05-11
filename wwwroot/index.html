@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Список книг</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="books-list">
+    </div>
+
+    <div id="add-book-div">
+        <button id="add-book">Добавить новую книгу</button>
+    </div>
+
+
+    <script>
+        var socket = new WebSocket("ws://localhost:5000/ws");
+
+        socket.onopen = function (event) {
+            console.log("onopen")
+
+            socket.send(
+                JSON.stringify(
+                    {
+                        "type": "books"
+                    }
+                )
+            );
+        };
+        socket.onclose = function (event) {
+            console.log("onclose")
+        };
+        socket.onerror = function (event) {
+            console.log("onerror")
+        };
+        socket.onmessage = function (event) {
+            console.log("onmessage")
+
+            var books = JSON.parse(event.data)
+
+            const booksList = document.querySelector('.books-list');
+
+            books.forEach(book => {
+                const bookItem = document.createElement('div');
+                bookItem.className = 'book-item';
+                bookItem.innerHTML = `
+                    <h2>${book.title}</h2>
+                    <button class="edit-button">Изменить</button>
+                    <button class="delete-button" data-id="${book.id}">Удалить</button>
+                `;
+                booksList.appendChild(bookItem);
+
+
+                // Находим кнопку "Удалить" внутри текущего элемента book-item
+                const deleteButton = bookItem.querySelector('.delete-button');
+                deleteButton.addEventListener('click', () => {
+                    const bookId = deleteButton.getAttribute('data-id');
+                    socket.send(
+                        JSON.stringify({
+                            "type": "delete",
+                            "payload": bookId
+                        })
+                    )
+                    location.reload()
+                });
+
+                // Находим кнопку "Изменить" внутри текущего элемента book-item
+                const editButton = bookItem.querySelector('.edit-button');
+                editButton.addEventListener('click', () => {
+                    const bookId = editButton.getAttribute('data-id');
+
+                    const titleInput = document.createElement('input');
+                    titleInput.value = book.title;
+
+                    const saveButton = document.createElement('button');
+                    saveButton.textContent = 'Сохранить';
+
+                    const cancelButton = document.createElement('button');
+                    cancelButton.textContent = 'Отмена';
+
+                    bookItem.innerHTML = '';
+                    bookItem.appendChild(titleInput);
+                    bookItem.appendChild(saveButton);
+                    bookItem.appendChild(cancelButton);
+
+                    saveButton.addEventListener('click', () => {
+                        book.title = titleInput.value;
+                        socket.send(
+                            JSON.stringify({
+                                "type": "update",
+                                "payload": JSON.stringify(book)
+                            })
+                        )
+
+                        location.reload()
+                    });
+
+                    cancelButton.addEventListener('click', () => {
+                        location.reload()
+                    });
+                });
+            });
+        };
+
+        const addBookButton = document.getElementById('add-book');
+        addBookButton.addEventListener('click', () => {
+
+            var div = document.getElementById("add-book-div");
+
+            const titleInput = document.createElement('input');
+            titleInput.value = "";
+            titleInput.placeholder = "Название книги"
+
+            const authorInput = document.createElement('input');
+            authorInput.value = "";
+            authorInput.placeholder = "id автора"
+
+            const saveButton = document.createElement('button');
+            saveButton.textContent = 'Создать';
+
+            const cancelButton = document.createElement('button');
+            cancelButton.textContent = 'Отмена';
+
+            div.innerHTML = '';
+            div.appendChild(titleInput);
+            div.appendChild(authorInput);
+            div.appendChild(saveButton);
+            div.appendChild(cancelButton);
+
+            saveButton.addEventListener('click', () => {
+
+                socket.send(
+                    JSON.stringify({
+                        "type": "create",
+                        "payload": JSON.stringify({
+                            "title": titleInput.value,
+                            "author_id": authorInput.value,
+                        })
+                    })
+                )
+
+                location.reload()
+            });
+
+            cancelButton.addEventListener('click', () => {
+                location.reload()
+            });
+        });
+
+
+    </script>
+</body>
+
+</html>
